@@ -36,6 +36,7 @@ in
     inkscape
     libreoffice
     ranger
+    dropbox
 
     # System
     xclip
