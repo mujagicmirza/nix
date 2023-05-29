@@ -1,0 +1,22 @@
+{
+    "firefox": "firefox",
+    "viber": "phone",
+    "chromium-browser": "chrome",
+    "chrome": "chrome",
+    "google-chrome": "chrome",
+    "brave-browser": "chrome",
+    "dolphin": "folder-open",
+    "code": "code",
+    "docker": "server",
+    "slack": "slack",
+    "x-terminal-emulator": "terminal",
+    "thunderbird": "envelope",
+    "jetbrains-idea-ce": "edit",
+    "nautilus": "folder-open",
+    "clementine": "music",
+    "vlc": "play",
+    "signal": "comment",
+    "_no_match": "question",
+    "VirtualBox Manager": "server",
+    "VirtualBox Machine": "server"
+}

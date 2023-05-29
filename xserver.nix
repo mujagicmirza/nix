@@ -14,14 +14,13 @@ in
     };
    
     displayManager = {
-        defaultSession = "none+i3";
-	gdm.enable = true;
+      defaultSession = "none+i3";
+	  gdm.enable = true;
     };
 
     windowManager.i3 = {
       package = unstable.i3;
       enable = true;
-      configFile = ./i3.cfg;
     };
   };
 }
