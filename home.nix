@@ -23,7 +23,6 @@ in
     # Development
     git
     konsole
-    vscode
     python3
     emacs
     (ripgrep.override { withPCRE2 = true; }) # Doom Emacs dependency
@@ -36,14 +35,30 @@ in
     gimp
     inkscape
     libreoffice
+    ranger
 
     # System
     xclip
     networkmanagerapplet
+    arandr
 
     # Fonts
     noto-fonts-emoji
   ];
+
+  programs.vscode = {
+    enable = true;
+    package = pkgs.vscode.fhs;
+    extensions = with pkgs.vscode-extensions; [
+      dracula-theme.theme-dracula
+      vscodevim.vim
+      catppuccin.catppuccin-vsc
+      github.copilot
+      editorconfig.editorconfig
+      dbaeumer.vscode-eslint
+      eamodio.gitlens
+    ];
+  };
 
   programs.zsh = {
     enable = true;
