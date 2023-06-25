@@ -7,22 +7,26 @@
     vimdiffAlias = true;
 
     plugins = with pkgs.vimPlugins; [
-      nvim-lspconfig
-      nvim-web-devicons
-      plenary-nvim
+      nvim-lspconfig      # LSP
+      nvim-cmp
+      cmp-nvim-lsp
+
+      telescope-nvim      # Fuzzy serach
+        plenary-nvim
+      nvim-scrollbar      # Scrollbar
+      vim-fugitive        # Git
+      gitsigns-nvim       # Inline blame and stuff
+      gruvbox-nvim        # Color scheme
+      copilot-vim         # Github Copilot
+      nvim-tree-lua       # File manager
+      lualine-nvim        # Status line
+      vim-nix             # Nix syntax
+
+
+      nvim-web-devicons   # Icons
       nvim-treesitter
-      telescope-nvim
-      vimtex
-      ultisnips
-      vim-fugitive
-      nvim-scrollbar
-      vim-html-template-literals
-      gruvbox-nvim
-      copilot-vim
-      nvim-tree-lua
-      # coq_nvim        # In order to use COQ, you have to install some deps using :COQDeps which will dirty up the system
-      lualine-nvim
-      vim-nix
+      vimtex            # LaTeX support
+      # ultisnips         # Snippets
     ];
 
     extraConfig = ''

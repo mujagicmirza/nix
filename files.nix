@@ -8,6 +8,7 @@
   home.file.".local/share/fonts/BlexMonoNerd.ttf".source = ./files/fonts/BlexMonoNerd.ttf;
   
   home.file."Pictures/glass.jpg".source = ./files/pictures/glass.jpg;
+  home.file."Pictures/flowers.jpg".source = ./files/pictures/flowers.jpg;
 
   # home.file."Scripts/i3-workspace-names-daemon.py".source = ./scripts/i3-workspace-names-daemon.py;
 
@@ -23,6 +24,16 @@
 
   xdg.configFile.nvim = {
     source = ./configs/nvim;
+    recursive = true;
+  };
+
+  xdg.configFile.kitty = {
+    source = ./configs/kitty;
+    recursive = true;
+  };
+
+  xdg.configFile.deadd = {
+    source = ./configs/deadd;
     recursive = true;
   };
 }

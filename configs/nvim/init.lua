@@ -1,36 +1,6 @@
 require('LspConfig')
 require('VimConfig')
 require('TreeConfig')
---local use = require('packer').use
---
---require('packer').startup(function()
---  use {
---    'wbthomason/packer.nvim',
---    'neovim/nvim-lspconfig',
---    'kyazdani42/nvim-web-devicons',
---    'nvim-lua/plenary.nvim',
---    'nvim-treesitter/nvim-treesitter',
---    'nvim-telescope/telescope.nvim',
---    'kyazdani42/nvim-tree.lua',
---      requires = {
---      'kyazdani42/nvim-web-devicons', -- optional, for file icons
---      },
---      tag = 'nightly',
---    --'Mofiqul/dracula.nvim',
---    'ms-jpq/coq_nvim', branch = 'coq',
---    'lervag/vimtex',
---    'SirVer/ultisnips',
---    'tpope/vim-fugitive',
---    'nvim-lualine/lualine.nvim',
---    requires = { 'kyazdani42/nvim-web-devicons', opt = true },
---    'petertriho/nvim-scrollbar',
---    'APZelos/blamer.nvim',
---    'pangloss/vim-javascript',
---    'jonsmithers/vim-html-template-literals',
---    'ellisonleao/gruvbox.nvim',
---    'github/copilot.vim',
---    }
---end)
 
 vim.cmd([[
     nnoremap <C-p> <cmd>Telescope find_files<cr>
@@ -51,6 +21,10 @@ let g:vimtex_compiler_latexmk = {
 ]])
 vim.cmd([[
 let g:vimtex_quickfix_enabled = 0
+]])
+
+vim.cmd([[
+let g:vimtex_view_method = 'zathura'
 ]])
 
 vim.cmd([[
@@ -84,3 +58,7 @@ require('lualine').setup{
     }
 }
 require("scrollbar").setup()
+
+require('gitsigns').setup()
+
+

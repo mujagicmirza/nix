@@ -1,0 +1,16 @@
+monitors=$(/home/mirza/.nix-profile/bin/polybar --list-monitors | ${pkgs.coreutils}/bin/cut -d":" -f1)
+help=$(/home/mirza/.nix-profile/bin/polybar --list-monitors)
+
+echo $help
+echo $monitors
+
+if [[ $monitors == *"HDMI-1"* ]]; then
+    TRAY_POSITION="right" MONITOR="HDMI-1" /home/mirza/.nix-profile/bin/polybar -c ~/.config/polybar/config.ini example -r &
+    MONITOR="eDP-1" /home/mirza/.nix-profile/bin/polybar -c ~/.config/polybar/config example -r &
+else
+    TRAY_POSITION="right" MONITOR="eDP-1" /home/mirza/.nix-profile/bin/polybar -c ~/.config/polybar/config.ini example -r &
+fi
+ 
+
+
+

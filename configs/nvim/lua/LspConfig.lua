@@ -30,18 +30,36 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
   vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-  vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
+  vim.keymap.set('n', '<space>f', function()
+      vim.lsp.buf.format { async = true }
+    end, opts)
 end
 
 local lsp_flags = {
   -- This is the default in Nvim 0.7+
   debounce_text_changes = 150,
 }
-require('lspconfig')['intelephense'].setup{
-    on_attach = on_attach,
-    flags = lsp_flags,
+
+-- Autocomplete engine
+require'cmp'.setup {
+  sources = {
+    { name = 'nvim_lsp' }
+  }
 }
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+-- require('lspconfig')['intelephense'].setup{
+--     on_attach = on_attach,
+--     flags = lsp_flags,
+-- }
 require('lspconfig')['tsserver'].setup{
     on_attach = on_attach,
     flags = lsp_flags,
+    capabilities = capabilities
+}
+
+require('lspconfig')['tailwindcss'].setup{
+    on_attach = on_attach,
+    flags = lsp_flags,
+    capabilities = capabilities
 }

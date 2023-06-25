@@ -46,5 +46,12 @@ vim.cmd[[
     noremap <M-8> 8gt
     noremap <M-9> 9gt
     noremap <M-0> :tablast<cr>
+    
+    noremap \| :vsplit<CR>
 
+    nnoremap <c-c> i\chord{}<ESC>i
+    nnoremap <F5> o\begin{strofa}<ESC>o\end{strofa}<ESC>k
+    nnoremap <F6> o\begin{refren}<ESC>o\end{refren}<ESC>k
+    nnoremap <F7> o\begin{bridge}<ESC>o\end{bridge}<ESC>k
+    nnoremap <F8> o\begin{solo}<ESC>o\end{solo}<ESC>k
 ]]

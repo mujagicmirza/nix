@@ -9,7 +9,6 @@
     shellAliases = {
       ll = "ls -l";
       copy = "xclip -sel c";
-      hello = "echo $1";
       update = "sudo nixos-rebuild switch";
     };
 
