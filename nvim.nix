@@ -5,6 +5,7 @@
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
+    defaultEditor = true;
 
     plugins = with pkgs.vimPlugins; [
       nvim-lspconfig      # LSP
@@ -21,11 +22,12 @@
       nvim-tree-lua       # File manager
       lualine-nvim        # Status line
       vim-nix             # Nix syntax
+      neoformat           # Formatter
 
 
       nvim-web-devicons   # Icons
       nvim-treesitter
-      vimtex            # LaTeX support
+      vimtex              # LaTeX support
       # ultisnips         # Snippets
     ];
 

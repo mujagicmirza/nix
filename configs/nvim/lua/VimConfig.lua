@@ -17,6 +17,7 @@ vim.opt.background = 'dark'
 vim.cmd("let g:gruvbox_transparent_bg = 1")
 vim.cmd("autocmd VimEnter * hi Normal ctermbg=NONE guibg=NONE")
 vim.cmd("colorscheme gruvbox")
+vim.cmd("let g:neoformat_try_node_exe = 1")
 
 vim.cmd[[
 function InkDraw()
@@ -35,7 +36,9 @@ function InkEdit()
 endfunction
 ]]
 
+
 vim.cmd[[
+    let mapleader = ","
     noremap <M-1> 1gt
     noremap <M-2> 2gt
     noremap <M-3> 3gt
@@ -46,6 +49,9 @@ vim.cmd[[
     noremap <M-8> 8gt
     noremap <M-9> 9gt
     noremap <M-0> :tablast<cr>
+
+    nnoremap <Leader>f :Neoformat<cr>
+    inoremap <Leader>f <Esc>:Neoformat<cr>a
     
     noremap \| :vsplit<CR>
 

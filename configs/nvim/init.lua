@@ -5,6 +5,7 @@ require('TreeConfig')
 vim.cmd([[
     nnoremap <C-p> <cmd>Telescope find_files<cr>
     nnoremap <C-f> <cmd>Telescope live_grep<cr>
+    nnoremap <C-b> <cmd>Telescope buffers<cr>
 ]])
 
 vim.cmd([[

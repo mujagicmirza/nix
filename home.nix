@@ -26,6 +26,8 @@ in
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.permittedInsecurePackages = [ "nodejs-16.19.0" "openssl-1.1.1u" "electron-12.2.3" ];
 
+  home.file.".icons/default".source = "${pkgs.apple-cursor}/share/icons/Apple-Cursor";
+
   xdg.configFile."mimeapps.list".force = true;
   xdg.mimeApps = {
     enable = true;
@@ -72,6 +74,7 @@ in
     lutris
     viber
     zathura
+    gnome.nautilus
 
     # System
     xclip
