@@ -63,3 +63,9 @@ require('lspconfig')['tailwindcss'].setup{
     flags = lsp_flags,
     capabilities = capabilities
 }
+
+require('lspconfig')['eslint'].setup{
+    on_attach = on_attach,
+    flags = lsp_flags,
+    capabilities = capabilities
+}

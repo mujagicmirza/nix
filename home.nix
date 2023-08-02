@@ -56,6 +56,7 @@ in
     fd                                       # Doom Emacs dependency
     nodePackages.typescript
     nodePackages.typescript-language-server
+    nodePackages.vscode-langservers-extracted
     nodePackages."@tailwindcss/language-server"
     openvpn
     texlive.combined.scheme-full
