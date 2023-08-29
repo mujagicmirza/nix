@@ -3,14 +3,10 @@ let
   unstable = import <unstable> {};
   previous = import <previous> {};
 
-  buildNodejs = pkgs.callPackage <nixpkgs/pkgs/development/web/nodejs/nodejs.nix> {
-    python = pkgs.python3;
-  };
-  nodara = buildNodejs {
-    version = "16.19.0";
-    sha256 = "4f1fec1aea2392f6eb6d1d040b01e7ee3e51e762a9791dfea590920bc1156706";
-  };
-
+  nodePkg = import (builtins.fetchTarball {
+    # made using https://lazamar.co.uk/nix-versions/
+    url = "https://github.com/NixOS/nixpkgs/archive/55070e598e0e03d1d116c49b9eff322ef07c6ac6.tar.gz";
+  }) {};
 in
 {
   imports =
@@ -24,7 +20,7 @@ in
   home.username = "mirza";
   home.homeDirectory = "/home/mirza";
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.permittedInsecurePackages = [ "nodejs-16.19.0" "openssl-1.1.1u" "electron-12.2.3" ];
+  nixpkgs.config.permittedInsecurePackages = [ "nodejs-16.19.0" "openssl-1.1.1v" "electron-12.2.3" ];
 
   home.file.".icons/default".source = "${pkgs.apple-cursor}/share/icons/Apple-Cursor";
 
@@ -34,6 +30,10 @@ in
     defaultApplications = {
       "application/pdf" = "zathura.desktop";
       "x-scheme-handler/viber" = ["viber.desktop"];
+      # Browser
+      "text/html" = "brave.desktop";
+      "x-scheme-handler/http" = "brave.desktop";
+      "x-scheme-handler/https" = "brave.desktop";
     };
 
   };
@@ -50,8 +50,8 @@ in
     gnome.gnome-terminal
     python3
     emacs
-    nodara
-    (yarn.override { nodejs = nodara; })
+    nodePkg.nodejs-16_x
+    (yarn.override { nodejs = nodePkg.nodejs-16_x; })
     (ripgrep.override { withPCRE2 = true; }) # Doom Emacs dependency
     fd                                       # Doom Emacs dependency
     nodePackages.typescript
@@ -59,23 +59,26 @@ in
     nodePackages.vscode-langservers-extracted
     nodePackages."@tailwindcss/language-server"
     openvpn
-    texlive.combined.scheme-full
+    #texlive.combined.scheme-full
+    dbeaver
 
     # Desktop
     ulauncher
     feh
     slack
-    gimp
-    inkscape
-    libreoffice
+    #gimp
+    #inkscape
+    #libreoffice
     ranger
       ueberzug
     dropbox
     keepassxc
-    lutris
+    #lutris
     viber
-    zathura
+    #zathura
     gnome.nautilus
+    simplescreenrecorder
+    maim
 
     # System
     xclip
@@ -83,7 +86,8 @@ in
     arandr
     deadd-notification-center
     libnotify
-    etcher
+    qbittorrent
+    #etcher
 
     # Fonts
     noto-fonts-emoji

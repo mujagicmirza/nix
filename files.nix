@@ -10,6 +10,11 @@
   home.file."Pictures/glass.jpg".source = ./files/pictures/glass.jpg;
   home.file."Pictures/flowers.jpg".source = ./files/pictures/flowers.jpg;
 
+  home.file."Scripts/lock.sh" = {
+    executable = true;
+    source = ./scripts/lock.sh; 
+  };
+
   # home.file."Scripts/i3-workspace-names-daemon.py".source = ./scripts/i3-workspace-names-daemon.py;
 
   xdg.configFile.ranger = {

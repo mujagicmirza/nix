@@ -3,8 +3,8 @@ vim.opt.relativenumber = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 --vim.opt.cursorline = true
 vim.opt.scrolloff = 999
@@ -14,7 +14,7 @@ vim.opt.background = 'dark'
 
 --vim.g.coq_settings.xdg = true;
 
-vim.cmd("let g:gruvbox_transparent_bg = 1")
+--vim.cmd("let g:gruvbox_transparent_bg = 1")
 vim.cmd("autocmd VimEnter * hi Normal ctermbg=NONE guibg=NONE")
 vim.cmd("colorscheme gruvbox")
 vim.cmd("let g:neoformat_try_node_exe = 1")
@@ -39,6 +39,7 @@ endfunction
 
 vim.cmd[[
     let mapleader = ","
+    set splitright
     noremap <M-1> 1gt
     noremap <M-2> 2gt
     noremap <M-3> 3gt
@@ -50,10 +51,23 @@ vim.cmd[[
     noremap <M-9> 9gt
     noremap <M-0> :tablast<cr>
 
+    nnoremap <C-S-tab> :tabprevious<CR>
+    nnoremap <C-tab>   :tabnext<CR>
+    nnoremap <C-t>     :tabnew<CR>
+    inoremap <C-S-tab> <Esc>:tabprevious<CR>i
+    inoremap <C-tab>   <Esc>:tabnext<CR>i
+    inoremap <C-t>     <Esc>:tabnew<CR>
+
     nnoremap <Leader>f :Neoformat<cr>
     inoremap <Leader>f <Esc>:Neoformat<cr>a
     
     noremap \| :vsplit<CR>
+    noremap - :split<CR>
+
+    " <Leader>s to open current file stylesheet in new split
+    nnoremap <Leader>s 
+    nnoremap <Leader>s :vsp <C-R>=expand("%:p:h") . "/" . matchstr(expand("%:t:r"), '^\(.*\)\(\.spec\)*$') . ".module.scss"<CR>
+
 
     nnoremap <c-c> i\chord{}<ESC>i
     nnoremap <F5> o\begin{strofa}<ESC>o\end{strofa}<ESC>k

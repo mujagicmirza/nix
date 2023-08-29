@@ -37,9 +37,11 @@ in
 
 
       nvim-web-devicons   # Icons
+      nvim-colorizer-lua
       nvim-treesitter
       vimtex              # LaTeX support
       # ultisnips         # Snippets
+      (fromGitHub "HEAD" "ntk148v/komau.vim")
     ];
 
     extraConfig = ''

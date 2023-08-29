@@ -41,11 +41,22 @@ local lsp_flags = {
 }
 
 -- Autocomplete engine
-require'cmp'.setup {
+local cmp = require('cmp')
+cmp.setup {
   sources = {
     { name = 'nvim_lsp' }
-  }
+  },
+  mapping = {
+    ["<Down>"] = cmp.mapping(cmp.mapping.select_next_item({
+      behavior = cmp.SelectBehavior.Insert
+    }), {'i'}),
+    ["<Up>"] = cmp.mapping(cmp.mapping.select_prev_item({
+      behavior = cmp.SelectBehavior.Insert
+    }), {'i'}),
+    ["<C-Space>"] = cmp.mapping.complete(),
+  },
 }
+
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 -- require('lspconfig')['intelephense'].setup{
