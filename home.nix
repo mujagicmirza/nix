@@ -103,19 +103,9 @@ in
     enable = true;
     script = ''
       monitors=$(polybar --list-monitors | ${pkgs.coreutils}/bin/cut -d":" -f1)
-      help=$(polybar --list-monitors)
 
-      echo $help
-      echo $monitors
-
-      if [[ $monitors == *"HDMI-1"* ]]; then
-          TRAY_POSITION="right" MONITOR="HDMI-1" polybar -c ~/.config/polybar/config.ini example -r &
-          if [[ $monitors == *"eDP-1"* ]]; then
-              MONITOR="eDP-1" polybar -c ~/.config/polybar/config.ini example -r &
-          fi
-      else
-          TRAY_POSITION="right" MONITOR="eDP-1" polybar -c ~/.config/polybar/config.ini example -r &
-      fi
+      TRAY_POSITION="right" MONITOR="DVI-D-0" polybar -c ~/.config/polybar/config.ini example -r &
+      MONITOR="HDMI-0" polybar -c ~/.config/polybar/config.ini example -r &
     '';
 
 
