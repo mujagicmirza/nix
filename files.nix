@@ -6,9 +6,11 @@
   
   home.file.".local/share/fonts/MonacoNerd.ttf".source = ./files/fonts/MonacoNerd.ttf;
   home.file.".local/share/fonts/BlexMonoNerd.ttf".source = ./files/fonts/BlexMonoNerd.ttf;
+  home.file.".local/share/fonts/JetBrainsMonoNerd.ttf".source = ./files/fonts/JetBrainsMonoNerd.ttf;
   
   home.file."Pictures/glass.jpg".source = ./files/pictures/glass.jpg;
   home.file."Pictures/flowers.jpg".source = ./files/pictures/flowers.jpg;
+  home.file."Pictures/space.png".source = ./files/pictures/space.png;
 
   home.file."Scripts/lock.sh" = {
     executable = true;
@@ -39,6 +41,11 @@
 
   xdg.configFile.deadd = {
     source = ./configs/deadd;
+    recursive = true;
+  };
+
+  xdg.configFile.tofi = {
+    source = ./configs/tofi;
     recursive = true;
   };
 }

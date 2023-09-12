@@ -285,7 +285,7 @@ bindsym $mod+Shift+x exec /home/mirza/Scripts/lock.sh
 #exec_always --no-startup-id /usr/bin/xmodmap -e "keysym Caps_Lock = Escape"
 exec --no-startup-id systemctl --user restart picom
 exec --no-startup-id systemctl --user restart polybar
-exec --no-startup-id feh --bg-fill Pictures/flowers.jpg
+exec --no-startup-id feh --bg-fill Pictures/space.png
 exec --no-startup-id ulauncher --hide-window --no-window-shadow
 exec --no-startup-id deadd-notification-center
 #exec --no-startup-id /home/mirza/Scripts/i3Shortcuts/i3Shortcuts

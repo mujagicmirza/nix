@@ -10,13 +10,12 @@ vim.opt.expandtab = true
 vim.opt.scrolloff = 999
 
 vim.opt.mouse = "a"
-vim.opt.background = 'dark'
+--vim.opt.background = 'dark'
 
 --vim.g.coq_settings.xdg = true;
 
---vim.cmd("let g:gruvbox_transparent_bg = 1")
+vim.cmd("colorscheme nord")
 vim.cmd("autocmd VimEnter * hi Normal ctermbg=NONE guibg=NONE")
-vim.cmd("colorscheme gruvbox")
 vim.cmd("let g:neoformat_try_node_exe = 1")
 
 vim.cmd[[

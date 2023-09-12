@@ -17,6 +17,14 @@ in
     ./files.nix
   ];
 
+  nixpkgs.overlays = [
+    (self: super: {
+      waybar = super.waybar.overrideAttrs (oldAttrs: {
+        mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+      });
+    })
+  ];
+
   home.username = "mirza";
   home.homeDirectory = "/home/mirza";
   nixpkgs.config.allowUnfree = true;
@@ -48,7 +56,9 @@ in
     #konsole
     kitty
     gnome.gnome-terminal
-    python3
+    (python311.withPackages (p: with p; [
+      requests
+    ]))
     emacs
     nodePkg.nodejs-16_x
     (yarn.override { nodejs = nodePkg.nodejs-16_x; })
@@ -79,6 +89,12 @@ in
     gnome.nautilus
     simplescreenrecorder
     maim
+
+    waybar
+    hyprpaper
+    tofi
+    swaynotificationcenter
+    pamixer
 
     # System
     xclip

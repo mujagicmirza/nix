@@ -25,7 +25,6 @@ in
 
       telescope-nvim      # Fuzzy serach
         plenary-nvim
-      nvim-scrollbar      # Scrollbar
       vim-fugitive        # Git
       gitsigns-nvim       # Inline blame and stuff
       gruvbox-nvim        # Color scheme
@@ -42,6 +41,11 @@ in
       vimtex              # LaTeX support
       # ultisnips         # Snippets
       (fromGitHub "HEAD" "ntk148v/komau.vim")
+      (fromGitHub "HEAD" "shaunsingh/nord.nvim")
+
+      (fromGitHub "HEAD" "giusgad/hologram.nvim")
+      (fromGitHub "HEAD" "MunifTanjim/nui.nvim")
+      (fromGitHub "HEAD" "giusgad/pets.nvim")
     ];
 
     extraConfig = ''

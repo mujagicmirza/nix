@@ -59,10 +59,7 @@ require('lualine').setup{
     }
 }
 
-require("scrollbar").setup()
-
 require('gitsigns').setup()
-
 
 require("colorizer").setup {
     user_default_options = {
@@ -90,4 +87,16 @@ require("colorizer").setup {
     -- all the sub-options of filetypes apply to buftypes
     buftypes = {},
 }
+require("pets").setup({
+  -- your options here
+})
 
+require('telescope').setup {
+  defaults = {
+    mappings = {
+      i = {
+        ["<C-d>"] = require('telescope.actions').delete_buffer,
+      }
+    }
+  }
+}
