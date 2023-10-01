@@ -48,4 +48,19 @@
     source = ./configs/tofi;
     recursive = true;
   };
+
+  xdg.configFile.hypr = {
+    source = ./configs/hypr;
+    recursive = true;
+  };
+
+  xdg.configFile.waybar = {
+    source = ./configs/waybar;
+    recursive = true;
+  };
+
+  xdg.configFile.wtf = {
+    source = ./configs/wtf;
+    recursive = true;
+  };
 }

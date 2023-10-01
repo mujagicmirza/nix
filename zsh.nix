@@ -18,6 +18,8 @@
       checkFull = "yarn nx run-many --target=lint --all --skip-nx-cache && yarn nx run-many --target=tsc --all  --skip-nx-cache && yarn nx run-many --target=test --all  --skip-nx-cache &&  yarn nx run-many --target=build --all --skip-nx-cache";
       serve = "yarn nx run-many --target=serve --projects=admin,server";
       hm = "nvim --cmd 'cd ~/.config/home-manager | e home.nix'";
+      cwd = "cd $(cat ~/.cwd)";
+      mwd = "echo $(pwd) > ~/.cwd";
     };
 
     history = {
@@ -28,6 +30,5 @@
       enable = true;
       theme = "robbyrussell";
     };
-
   };
 }

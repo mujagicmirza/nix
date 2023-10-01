@@ -33,6 +33,7 @@ in
       lualine-nvim        # Status line
       vim-nix             # Nix syntax
       neoformat           # Formatter
+      vim-glsl            # GLSL syntax
 
 
       nvim-web-devicons   # Icons

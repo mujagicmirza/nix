@@ -1,0 +1,152 @@
+wtf:
+  refreshInterval: 1
+  openFileUtil: "open"
+  mods:
+    # You can have multiple widgets of the same type.
+    # The "key" is the name of the widget and the type is the actual
+    # widget you want to implement.
+    europe_time:
+      title: "Europe"
+      type: clocks
+      enabled: true
+      locations:
+        GMT: "Etc/GMT"
+        Amsterdam: "Europe/Amsterdam"
+        Berlin: "Europe/Berlin"
+        Barcelona: "Europe/Madrid"
+        Copenhagen: "Europe/Copenhagen"
+        London: "Europe/London"
+        Rome: "Europe/Rome"
+        Stockholm: "Europe/Stockholm"
+      position:
+        top: 0
+        left: 1
+        height: 1
+        width: 1
+      refreshInterval: 15
+      sort: "alphabetical"
+        #americas_time:
+        #  title: "Americas"
+        #  type: clocks
+        #  enabled: true
+        #  locations:
+        #    UTC: "Etc/UTC"
+        #    Vancouver: "America/Vancouver"
+        #    New_York: "America/New_York"
+        #    Sao_Paulo: "America/Sao_Paulo"
+        #    Denver: "America/Denver"
+        #    Iqaluit: "America/Iqaluit"
+        #    Bahamas: "America/Nassau"
+        #    Chicago: "America/Chicago"
+        #  position:
+        #    top: 0
+        #    left: 1
+        #    height: 1
+        #    width: 1
+        #  refreshInterval: 15
+        #  sort: "alphabetical"
+    todolist:
+      type: todo
+      checkedIcon: "X"
+      enabled: true
+      filename: "todo.yml"
+      position:
+        top: 3
+        left: 0
+        height: 2
+        width: 1
+      refreshInterval: 3600
+    disks:
+      type: cmdrunner
+      title: "Disk usage"
+      cmd: "df"
+      args: ["-h"]
+      enabled: true
+      focusable: false
+      position:
+        top: 1
+        left: 3
+        height: 1
+        width: 1
+      refreshInterval: 3600
+    ip:
+      type: ipinfo
+      title: "My IP"
+      enabled: true
+      position:
+        top: 0
+        left: 3
+        height: 1
+        width: 1
+      refreshInterval: 150
+    news:
+      type: hackernews
+      title: "HackerNews"
+      enabled: true
+      numberOfStories: 20
+      position:
+        top: 2
+        left: 1
+        height: 2
+        width: 3
+      storyType: top
+      refreshInterval: 900
+    resources:
+      type: resourceusage
+      enabled: true
+      position:
+        top: 1
+        left: 0
+        height: 2
+        width: 1
+      refreshInterval: 5
+    docker:
+      type: cmdrunner
+      title: "Containers"
+      args: ["stats", "--no-stream"]
+      cmd: "docker"
+      enabled: true
+      focusable: false
+      position:
+        top: 1
+        left: 1
+        height: 1
+        width: 2
+      refreshInterval: 60
+    feedreader:
+      enabled: true
+      feeds:
+        - https://rss.nytimes.com/services/xml/rss/nyt/World.xml
+      feedLimit: 10
+      position:
+        top: 4
+        left: 1
+        height: 1
+        width: 3
+      refreshInterval: 20m
+    prettyweather:
+      enabled: true
+      city: "Bihac"
+      title: "Weather"
+      position:
+          top: 0
+          left: 2
+          height: 1
+          width: 1
+      refreshInterval: 30m
+      unit: "m"
+      view: 0
+      language: "en"
+    digitalclock:
+      enabled: true
+      color: white
+      font: bigfont
+      hourFormat: 12
+      position:
+        top: 0
+        left: 0
+        height: 1
+        width: 1
+      refreshInterval: 1s
+      title: "Time"
+      type: "digitalclock"

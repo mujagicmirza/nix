@@ -89,8 +89,9 @@ in
     gnome.nautilus
     simplescreenrecorder
     maim
+    wtf
 
-    waybar
+    unstable.waybar
     hyprpaper
     tofi
     swaynotificationcenter
