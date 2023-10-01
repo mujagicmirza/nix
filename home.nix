@@ -2,11 +2,6 @@
 let
   unstable = import <unstable> {};
   previous = import <previous> {};
-
-  nodePkg = import (builtins.fetchTarball {
-    # made using https://lazamar.co.uk/nix-versions/
-    url = "https://github.com/NixOS/nixpkgs/archive/55070e598e0e03d1d116c49b9eff322ef07c6ac6.tar.gz";
-  }) {};
 in
 {
   imports =
@@ -28,7 +23,7 @@ in
   home.username = "mirza";
   home.homeDirectory = "/home/mirza";
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.permittedInsecurePackages = [ "nodejs-16.19.0" "openssl-1.1.1v" "electron-12.2.3" ];
+  nixpkgs.config.permittedInsecurePackages = [ "openssl-1.1.1v" "electron-12.2.3" ];
 
   home.file.".icons/default".source = "${pkgs.apple-cursor}/share/icons/Apple-Cursor";
 
@@ -60,8 +55,8 @@ in
       requests
     ]))
     emacs
-    nodePkg.nodejs-16_x
-    (yarn.override { nodejs = nodePkg.nodejs-16_x; })
+    nodejs
+    yarn
     (ripgrep.override { withPCRE2 = true; }) # Doom Emacs dependency
     fd                                       # Doom Emacs dependency
     nodePackages.typescript
