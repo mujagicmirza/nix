@@ -7,7 +7,6 @@
 
     initExtra = ''
       PATH=$PATH:~/Scripts
-      cd ~/hermes
     '';
 
     shellAliases = {
@@ -20,6 +19,8 @@
       hm = "nvim --cmd 'cd ~/.config/home-manager | e home.nix'";
       cwd = "cd $(cat ~/.cwd)";
       mwd = "echo $(pwd) > ~/.cwd";
+      rmContainers = "docker ps -a | sed '1d' | awk '{print $1}' | xargs -L1 -i sh -c \"docker stop {}; docker rm {}\"";
+      rmVolumes = "docker volume ls | sed '1d' | awk '{print $2}' | xargs -L1 -i sh -c \"docker volume rm {}\"";
     };
 
     history = {

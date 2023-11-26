@@ -2,17 +2,17 @@
 #                                   i3 setup                                  #
 ###############################################################################
 
-for_window [class=".*"] border pixel 0
-for_window [class="kitty"] border pixel 3
-gaps inner 10
-gaps outer 5
+#for_window [class=".*"] border pixel 0
+#for_window [class="kitty"] border pixel 3
+#gaps inner 10
+#gaps outer 5
 #workspace_auto_back_and_forth yes
 
 # window colours: border background text
-client.focused              #000000 #EEEEEE #000000 #B0EBFF
-client.focused_inactive     #000000 #999999 #000000
-client.unfocused            #000000 #999999 #000000
-client.urgent               #000000 #BC9B54 #000000
+#client.focused              #000000 #EEEEEE #000000 #B0EBFF
+#client.focused_inactive     #000000 #999999 #000000
+#client.unfocused            #000000 #999999 #000000
+#client.urgent               #000000 #BC9B54 #000000
 
 ###############################################################################
 #                                  Variables                                  #
@@ -295,3 +295,5 @@ exec --no-startup-id nm-applet
 # Startup programs
 exec slack -u %U
 exec --no-startup-id dropbox
+
+for_window [title="^Android Emulator.+:[0-9]+$"] floating enable

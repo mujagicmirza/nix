@@ -27,26 +27,31 @@ in
         plenary-nvim
       vim-fugitive        # Git
       gitsigns-nvim       # Inline blame and stuff
-      gruvbox-nvim        # Color scheme
       copilot-vim         # Github Copilot
       nvim-tree-lua       # File manager
       lualine-nvim        # Status line
-      vim-nix             # Nix syntax
       neoformat           # Formatter
-      vim-glsl            # GLSL syntax
+      leap-nvim           # Leap motion
+      vim-tmux-navigator  # Tmux navigation
 
+      vim-nix             # Nix syntax
+      vim-glsl            # GLSL syntax
 
       nvim-web-devicons   # Icons
       nvim-colorizer-lua
       nvim-treesitter
       vimtex              # LaTeX support
       # ultisnips         # Snippets
+
+      # Colorschemes
+      papercolor-theme
       (fromGitHub "HEAD" "ntk148v/komau.vim")
       (fromGitHub "HEAD" "shaunsingh/nord.nvim")
+      gruvbox-nvim
 
-      (fromGitHub "HEAD" "giusgad/hologram.nvim")
-      (fromGitHub "HEAD" "MunifTanjim/nui.nvim")
       (fromGitHub "HEAD" "giusgad/pets.nvim")
+        (fromGitHub "HEAD" "giusgad/hologram.nvim")
+        (fromGitHub "HEAD" "MunifTanjim/nui.nvim")
     ];
 
     extraConfig = ''

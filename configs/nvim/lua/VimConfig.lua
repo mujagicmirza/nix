@@ -6,17 +6,17 @@ vim.opt.smartcase = true
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
---vim.opt.cursorline = true
 vim.opt.scrolloff = 999
 
+vim.opt.exrc = true
+
 vim.opt.mouse = "a"
---vim.opt.background = 'dark'
 
---vim.g.coq_settings.xdg = true;
-
-vim.cmd("colorscheme nord")
-vim.cmd("autocmd VimEnter * hi Normal ctermbg=NONE guibg=NONE")
+vim.opt.background = 'dark'
+--vim.cmd("colorscheme nord")
+--vim.cmd("autocmd VimEnter * hi Normal ctermbg=NONE guibg=NONE")
 vim.cmd("let g:neoformat_try_node_exe = 1")
+vim.cmd("set foldmethod=indent")
 
 vim.cmd[[
 function InkDraw()
@@ -67,10 +67,16 @@ vim.cmd[[
     nnoremap <Leader>s 
     nnoremap <Leader>s :vsp <C-R>=expand("%:p:h") . "/" . matchstr(expand("%:t:r"), '^\(.*\)\(\.spec\)*$') . ".module.scss"<CR>
 
+    " Use tab to toggle folds
+    nnoremap <Tab> za
 
-    nnoremap <c-c> i\chord{}<ESC>i
-    nnoremap <F5> o\begin{strofa}<ESC>o\end{strofa}<ESC>k
-    nnoremap <F6> o\begin{refren}<ESC>o\end{refren}<ESC>k
-    nnoremap <F7> o\begin{bridge}<ESC>o\end{bridge}<ESC>k
-    nnoremap <F8> o\begin{solo}<ESC>o\end{solo}<ESC>k
+    " Because tab was previously used for jumping backwards in the jump list as Ctrl-i,
+    " we need to remap that to something else: Ctrl-l
+    nnoremap <C-l> <C-i>
+
+    "nnoremap <c-c> i\chord{}<ESC>i
+    "nnoremap <F5> o\begin{strofa}<ESC>o\end{strofa}<ESC>k
+    "nnoremap <F6> o\begin{refren}<ESC>o\end{refren}<ESC>k
+    "nnoremap <F7> o\begin{bridge}<ESC>o\end{bridge}<ESC>k
+    "nnoremap <F8> o\begin{solo}<ESC>o\end{solo}<ESC>k
 ]]

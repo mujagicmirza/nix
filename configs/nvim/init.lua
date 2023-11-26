@@ -68,7 +68,7 @@ require("colorizer").setup {
       names = true, -- "Name" codes like Blue or blue
       RRGGBBAA = false, -- #RRGGBBAA hex codes
       AARRGGBB = false, -- 0xAARRGGBB hex codes
-      rgb_fn = false, -- CSS rgb() and rgba() functions
+      rgb_fn = true, -- CSS rgb() and rgba() functions
       hsl_fn = false, -- CSS hsl() and hsla() functions
       css = true, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
       css_fn = false, -- Enable all CSS *functions*: rgb_fn, hsl_fn
@@ -97,6 +97,14 @@ require('telescope').setup {
       i = {
         ["<C-d>"] = require('telescope.actions').delete_buffer,
       }
-    }
+    },
+    file_ignore_patterns = { "package-lock.json" }
   }
 }
+require('leap').add_default_mappings()
+
+require("gruvbox").setup({
+  contrast = "hard",
+  transparent_mode = true,
+})
+vim.cmd("colorscheme gruvbox")

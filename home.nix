@@ -23,9 +23,14 @@ in
   home.username = "mirza";
   home.homeDirectory = "/home/mirza";
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.permittedInsecurePackages = [ "openssl-1.1.1v" "electron-12.2.3" ];
+  nixpkgs.config.permittedInsecurePackages = [ "openssl-1.1.1v" "electron-12.2.3" "openssl-1.1.1w" ];
 
   home.file.".icons/default".source = "${pkgs.apple-cursor}/share/icons/Apple-Cursor";
+
+  xresources.properties = {
+    "XTerm.vt100.reverseVideo" = true;
+    "XTerm.vt100.faceName" = "JetBrainsMono Nerd Font Mono:size=9";
+  };
 
   xdg.configFile."mimeapps.list".force = true;
   xdg.mimeApps = {
@@ -66,6 +71,7 @@ in
     openvpn
     #texlive.combined.scheme-full
     dbeaver
+    android-studio
 
     # Desktop
     ulauncher
@@ -94,6 +100,7 @@ in
 
     # System
     xclip
+    wl-clipboard
     networkmanagerapplet
     arandr
     deadd-notification-center
@@ -139,6 +146,29 @@ in
       pulseSupport = true;
       i3Support = true;
     };
+  };
+
+  programs.tmux = {
+    enable = true;
+    extraConfig = ''
+      set -g default-terminal screen-256color
+      set -g mouse on
+      
+      set -g base-index 1
+      setw -g pane-base-index 1
+
+      bind | split-window -hc "#{pane_current_path}"
+      bind - split-window -vc "#{pane_current_path}"
+      bind c new-window -c "#{pane_current_path}"
+    '';
+
+    plugins = with pkgs.tmuxPlugins; [
+      vim-tmux-navigator
+      gruvbox
+      yank
+    ];
+
+    shell = "${pkgs.zsh}/bin/zsh";
   };
 
   home.stateVersion = "22.11";
