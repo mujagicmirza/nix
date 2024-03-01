@@ -1,53 +1,38 @@
 { config, pkgs, ... }:
 let
-  unstable = import <nixos-unstable> {};
+  unstable = import <unstable> {};
 in
 {
   services.xserver = {
     enable = true;
+
     layout = "ba";
     xkbVariant = "";
 
     desktopManager = {
       xterm.enable = false;
-      gnome.enable = true;
+      #gnome.enable = true;
+      xfce = {
+        enable = true;
+        noDesktop = true;
+        enableXfwm = false;
+      };
     };
+
    
     displayManager = {
-      defaultSession = "none+i3";
-	  gdm.enable = true;
+      defaultSession = "xfce+i3";
+      lightdm.enable = true;
+      lightdm.greeters.slick.enable = true;
+      lightdm.greeters.slick.extraConfig = ''
+        background=/etc/nixos/greeterBackground.jpg
+        show-hostname=false
+      '';
     };
 
     windowManager.i3 = {
       package = unstable.i3;
       enable = true;
-    };
-  };
-
-  virtualisation.docker.enable = true;
-
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-  };
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
-  systemd = {
-    user.services.polkit-gnome-authentication-agent-1 = {
-      description = "polkit-gnome-authentication-agent-1";
-      wantedBy = [ "graphical-session.target" ];
-      wants = [ "graphical-session.target" ];
-      after = [ "graphical-session.target" ];
-      serviceConfig = {
-          Type = "simple";
-          ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-          Restart = "on-failure";
-          RestartSec = 1;
-          TimeoutStopSec = 10;
-      };
     };
   };
 }
