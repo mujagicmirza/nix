@@ -1,8 +1,8 @@
 { config, pkgs, ... }:
 {
-  home.file.".doom.d/config.el".source = ./configs/doom.d/config.el;
-  home.file.".doom.d/init.el".source = ./configs/doom.d/init.el;
-  home.file.".doom.d/packages.el".source = ./configs/doom.d/packages.el;
+  #home.file.".doom.d/config.el".source = ./configs/doom.d/config.el;
+  #home.file.".doom.d/init.el".source = ./configs/doom.d/init.el;
+  #home.file.".doom.d/packages.el".source = ./configs/doom.d/packages.el;
   
   home.file.".local/share/fonts/MonacoNerd.ttf".source = ./files/fonts/MonacoNerd.ttf;
   home.file.".local/share/fonts/BlexMonoNerd.ttf".source = ./files/fonts/BlexMonoNerd.ttf;
@@ -19,11 +19,26 @@
     source = ./scripts/lock.sh; 
   };
 
+  home.file."Scripts/monitors.sh" = {
+    executable = true;
+    source = ./scripts/monitors.sh; 
+  };
+
+  home.file."Scripts/gls" = {
+    executable = true;
+    source = ./scripts/gls.sh; 
+  };
+
   # home.file."Scripts/i3-workspace-names-daemon.py".source = ./scripts/i3-workspace-names-daemon.py;
 
   xdg.configFile.ranger = {
     source = ./configs/ranger;
     recursive = true;
+  };
+
+  xdg.configFile."ranger/scope.sh" = {
+    source = ./configs/ranger/scope.sh;
+    executable = true;
   };
 
   xdg.configFile.i3 = {

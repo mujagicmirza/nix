@@ -2,6 +2,11 @@
 let
   unstable = import <unstable> {};
   previous = import <previous> {};
+  nodepkgs = import (builtins.fetchTarball {
+      url = "https://github.com/NixOS/nixpkgs/archive/976fa3369d722e76f37c77493d99829540d43845.tar.gz";
+  }) {};
+
+  node = nodepkgs.elmPackages.nodejs;
 in
 {
   imports =
@@ -53,17 +58,23 @@ in
 
     # Development
     git
+    gh
+    github-copilot-cli
     #konsole
     kitty
     gnome.gnome-terminal
     (python311.withPackages (p: with p; [
       requests
     ]))
-    emacs
-    nodejs
-    yarn
+    #emacs
+    node
+    (yarn.override {
+      nodejs = node;
+    })
     (ripgrep.override { withPCRE2 = true; }) # Doom Emacs dependency
     fd                                       # Doom Emacs dependency
+    ispell
+    fzf
     nodePackages.typescript
     nodePackages.typescript-language-server
     nodePackages.vscode-langservers-extracted
@@ -71,12 +82,20 @@ in
     openvpn
     #texlive.combined.scheme-full
     dbeaver
-    android-studio
+    #android-studio
+    gcc13
+    unstable.awscli2
+    kubectl
+    eksctl
+    minikube
+    openlens
+    unstable.atuin
+    envsubst
 
     # Desktop
+    slack
     ulauncher
     feh
-    slack
     #gimp
     #inkscape
     #libreoffice
@@ -84,13 +103,15 @@ in
       ueberzug
     dropbox
     keepassxc
-    #lutris
+    lutris
+    wine
     viber
     #zathura
     gnome.nautilus
     simplescreenrecorder
     maim
     wtf
+    libsForQt5.kdeconnect-kde
 
     unstable.waybar
     hyprpaper
@@ -99,6 +120,9 @@ in
     pamixer
 
     # System
+    jq
+    highlight
+    file
     xclip
     wl-clipboard
     networkmanagerapplet
@@ -107,6 +131,8 @@ in
     libnotify
     qbittorrent
     #etcher
+    htop
+    wirelesstools
 
     # Fonts
     noto-fonts-emoji
@@ -128,12 +154,12 @@ in
       echo $monitors
 
       if [[ $monitors == *"HDMI-1"* ]]; then
-          TRAY_POSITION="right" MONITOR="HDMI-1" polybar -c ~/.config/polybar/config.ini example -r &
+          PB_MODULES_RIGHT="tray" MONITOR="HDMI-1" polybar -c ~/.config/polybar/config.ini example -r &
           if [[ $monitors == *"eDP-1"* ]]; then
               MONITOR="eDP-1" polybar -c ~/.config/polybar/config.ini example -r &
           fi
       else
-          TRAY_POSITION="right" MONITOR="eDP-1" polybar -c ~/.config/polybar/config.ini example -r &
+          PB_MODULES_RIGHT="tray" MONITOR="eDP-1" polybar -c ~/.config/polybar/config.ini example -r &
       fi
     '';
 
@@ -160,6 +186,8 @@ in
       bind | split-window -hc "#{pane_current_path}"
       bind - split-window -vc "#{pane_current_path}"
       bind c new-window -c "#{pane_current_path}"
+
+      bind-key -n MouseDrag1Status swap-window -t=
     '';
 
     plugins = with pkgs.tmuxPlugins; [
@@ -171,7 +199,12 @@ in
     shell = "${pkgs.zsh}/bin/zsh";
   };
 
-  home.stateVersion = "22.11";
+  programs.emacs = {
+    enable = true;
+    package = unstable.emacs29;
+  };
+
+  home.stateVersion = "23.05";
   
   programs.home-manager.enable = true;
 }

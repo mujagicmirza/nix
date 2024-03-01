@@ -30,7 +30,7 @@ maxln=200    # Stop after $maxln lines.  Can be used like ls | head -n $maxln
 
 # Find out something about the file:
 mimetype=$(file --mime-type -Lb "$path")
-extension=$(/bin/echo "${path##*.}" | awk '{print tolower($0)}')
+extension=$(echo "${path##*.}" | awk '{print tolower($0)}')
 
 # Functions:
 # runs a command and saves its output into $output.  Useful if you need
@@ -38,7 +38,7 @@ extension=$(/bin/echo "${path##*.}" | awk '{print tolower($0)}')
 try() { output=$(eval '"$@"'); }
 
 # writes the output of the previously used "try" command
-dump() { /bin/echo "$output"; }
+dump() { echo "$output"; }
 
 # a common post-processing function used after most commands
 trim() { head -n "$maxln"; }
@@ -97,7 +97,7 @@ esac
 
 case "$mimetype" in
     # Syntax highlight for text files:
-    text/* | */xml)
+    text/* | */xml | */json | */javascript)
         if [ "$(tput colors)" -ge 256 ]; then
             pygmentize_format=terminal256
             highlight_format=xterm256

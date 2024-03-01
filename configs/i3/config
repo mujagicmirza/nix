@@ -170,7 +170,9 @@ bindsym $mod+Shift+c reload
 # restart i3 
 bindsym $mod+Shift+r restart
 # exit i3 
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+#bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec xfce4-session-logout
+
 
 # mode to move workspaces to other outputs
 mode "move workspace to output" {
@@ -287,13 +289,13 @@ exec --no-startup-id systemctl --user restart picom
 exec --no-startup-id systemctl --user restart polybar
 exec --no-startup-id feh --bg-fill Pictures/space.png
 exec --no-startup-id ulauncher --hide-window --no-window-shadow
-exec --no-startup-id deadd-notification-center
+#exec --no-startup-id deadd-notification-center
 #exec --no-startup-id /home/mirza/Scripts/i3Shortcuts/i3Shortcuts
 exec --no-startup-id nm-applet
 #exec --no-startup-id python3 /home/mirza/Scripts/i3-workspace-names-daemon --delimiter "  "
 
 # Startup programs
-exec slack -u %U
+#exec slack -u %U
 exec --no-startup-id dropbox
 
 for_window [title="^Android Emulator.+:[0-9]+$"] floating enable

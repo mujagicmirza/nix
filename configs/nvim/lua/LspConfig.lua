@@ -58,7 +58,11 @@ cmp.setup {
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-require('lspconfig')['phpactor'].setup{
+-- require('lspconfig')['phpactor'].setup{
+--     on_attach = on_attach,
+--     flags = lsp_flags,
+-- }
+require('lspconfig')['intelephense'].setup{
     on_attach = on_attach,
     flags = lsp_flags,
 }

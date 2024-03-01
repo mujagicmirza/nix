@@ -26,11 +26,11 @@
         "window_type = 'dock'"
         "window_type = 'desktop'"
       ];
-      blur = 
-      {
-          method = "dual_kawase";
-          strength = 2;
-      };
+      #blur = 
+      #{
+      #    method = "dual_kawase";
+      #    strength = 8;
+      #};
       #blur-kern = "3x3box";
       #blur-background-exclude = [
       #  "window_type = 'dock'"

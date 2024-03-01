@@ -16,7 +16,6 @@ vim.opt.background = 'dark'
 --vim.cmd("colorscheme nord")
 --vim.cmd("autocmd VimEnter * hi Normal ctermbg=NONE guibg=NONE")
 vim.cmd("let g:neoformat_try_node_exe = 1")
-vim.cmd("set foldmethod=indent")
 
 vim.cmd[[
 function InkDraw()

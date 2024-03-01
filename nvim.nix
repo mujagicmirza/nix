@@ -1,7 +1,7 @@
 { config, pkgs, lib, ...}:
 
 let
-  fromGitHub = ref: repo: pkgs.vimUtils.buildVimPluginFrom2Nix {
+  fromGitHub = ref: repo: pkgs.vimUtils.buildVimPlugin {
     pname = "${lib.strings.sanitizeDerivationName repo}";
     version = ref;
     src = builtins.fetchGit {
@@ -31,7 +31,6 @@ in
       nvim-tree-lua       # File manager
       lualine-nvim        # Status line
       neoformat           # Formatter
-      leap-nvim           # Leap motion
       vim-tmux-navigator  # Tmux navigation
 
       vim-nix             # Nix syntax

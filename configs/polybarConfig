@@ -38,14 +38,14 @@ font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = "Noto Color Emoji:pixelsize=10:style=Regular:scale=10;2"
 
 modules-left = i3
-modules-center = xkeyboard filesystem pulseaudio memory cpu wlan eth battery temperature date
-#modules-right = 
+modules-center = xkeyboard filesystem pulseaudio memory cpu wlan eth battery temperature date backlight-acpi
+modules-right = ${env:PB_MODULES_RIGHT}
 
-tray-position = ${env:TRAY_POSITION:}
-tray-padding = 5
-tray-detached = false
-tray-background = #33131313
-tray-output = ${env:MONTIOR}
+#tray-position = ${env:TRAY_POSITION:}
+#tray-padding = 5
+#tray-detached = false
+#tray-background = #33131313
+#tray-output = ${env:MONTIOR}
 
 wm-restack = i3
 
@@ -53,6 +53,12 @@ override-redirect = false
 
 cursor-click = pointer
 cursor-scroll = ns-resize
+
+[module/tray]
+type = internal/tray
+
+format-margin = 8px
+tray-spacing = 8px
 
 [module/xwindow]
 type = internal/xwindow
