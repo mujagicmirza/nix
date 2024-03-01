@@ -1,13 +1,4 @@
-{ config, pkgs, ... }:
-let
-  unstable = import <unstable> {};
-  previous = import <previous> {};
-  nodepkgs = import (builtins.fetchTarball {
-      url = "https://github.com/NixOS/nixpkgs/archive/976fa3369d722e76f37c77493d99829540d43845.tar.gz";
-  }) {};
-
-  node = nodepkgs.elmPackages.nodejs;
-in
+{ config, pkgs, unstablePkgs, nodePkgs, ... }:
 {
   imports =
   [
@@ -67,9 +58,9 @@ in
       requests
     ]))
     #emacs
-    node
+    nodePkgs.elmPackages.nodejs
     (yarn.override {
-      nodejs = node;
+      nodejs = nodePkgs.elmPackages.nodejs;
     })
     (ripgrep.override { withPCRE2 = true; }) # Doom Emacs dependency
     fd                                       # Doom Emacs dependency
@@ -84,12 +75,12 @@ in
     dbeaver
     #android-studio
     gcc13
-    unstable.awscli2
+    unstablePkgs.awscli2
     kubectl
     eksctl
     minikube
     openlens
-    unstable.atuin
+    unstablePkgs.atuin
     envsubst
 
     # Desktop
@@ -113,7 +104,7 @@ in
     wtf
     libsForQt5.kdeconnect-kde
 
-    unstable.waybar
+    unstablePkgs.waybar
     hyprpaper
     tofi
     swaynotificationcenter
@@ -127,7 +118,6 @@ in
     wl-clipboard
     networkmanagerapplet
     arandr
-    deadd-notification-center
     libnotify
     qbittorrent
     #etcher
@@ -140,7 +130,7 @@ in
 
   services.picom = {
     enable = true;
-    package = unstable.picom-next;
+    package = unstablePkgs.picom-next;
     settings = builtins.import ./configs/picomConfig;
   };
 
@@ -165,7 +155,7 @@ in
 
 
     config = ./configs/polybarConfig;
-    package = unstable.polybar.override {
+    package = unstablePkgs.polybar.override {
       alsaSupport = true;
       githubSupport = true;
       mpdSupport = true;
@@ -201,7 +191,7 @@ in
 
   programs.emacs = {
     enable = true;
-    package = unstable.emacs29;
+    package = unstablePkgs.emacs29;
   };
 
   home.stateVersion = "23.05";

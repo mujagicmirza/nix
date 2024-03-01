@@ -1,7 +1,4 @@
-{ config, pkgs, ... }:
-let
-  unstable = import <unstable> {};
-in
+{ config, pkgs, unstablePkgs, ... }:
 {
   services.xserver = {
     enable = true;
@@ -31,7 +28,7 @@ in
     };
 
     windowManager.i3 = {
-      package = unstable.i3;
+      package = unstablePkgs.i3;
       enable = true;
     };
   };

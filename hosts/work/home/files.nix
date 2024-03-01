@@ -56,11 +56,6 @@
     recursive = true;
   };
 
-  xdg.configFile.deadd = {
-    source = ./configs/deadd;
-    recursive = true;
-  };
-
   xdg.configFile.tofi = {
     source = ./configs/tofi;
     recursive = true;

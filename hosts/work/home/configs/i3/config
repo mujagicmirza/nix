@@ -1,14 +1,18 @@
-
 ###############################################################################
 #                                   i3 setup                                  #
 ###############################################################################
 
-for_window [class=".*"] border pixel 0
-gaps inner 10 
-gaps outer 10
-smart_borders on
-border_radius 5
+#for_window [class=".*"] border pixel 0
+#for_window [class="kitty"] border pixel 3
+#gaps inner 10
+#gaps outer 5
 #workspace_auto_back_and_forth yes
+
+# window colours: border background text
+#client.focused              #000000 #EEEEEE #000000 #B0EBFF
+#client.focused_inactive     #000000 #999999 #000000
+#client.unfocused            #000000 #999999 #000000
+#client.urgent               #000000 #BC9B54 #000000
 
 ###############################################################################
 #                                  Variables                                  #
@@ -16,7 +20,7 @@ border_radius 5
 
 set $mod Mod4
 set $browser brave
-set $terminal konsole
+set $terminal kitty
 set $refresh_i3status killall -SIGUSR1 i3status
 
 floating_modifier $mod
@@ -166,7 +170,9 @@ bindsym $mod+Shift+c reload
 # restart i3 
 bindsym $mod+Shift+r restart
 # exit i3 
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+#bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec xfce4-session-logout
+
 
 # mode to move workspaces to other outputs
 mode "move workspace to output" {
@@ -281,13 +287,14 @@ bindsym $mod+Shift+x exec /home/mirza/Scripts/lock.sh
 #exec_always --no-startup-id /usr/bin/xmodmap -e "keysym Caps_Lock = Escape"
 exec --no-startup-id systemctl --user restart picom
 exec --no-startup-id systemctl --user restart polybar
-exec --no-startup-id feh --bg-fill Pictures/glass.jpg
+exec --no-startup-id feh --bg-fill Pictures/space.png
 exec --no-startup-id ulauncher --hide-window --no-window-shadow
-exec --no-startup-id /home/mirza/Scripts/deadd-notification-center
-exec --no-startup-id /home/mirza/Scripts/i3Shortcuts/i3Shortcuts
+#exec --no-startup-id /home/mirza/Scripts/i3Shortcuts/i3Shortcuts
 exec --no-startup-id nm-applet
-exec --no-startup-id i3-workspace-names-daemon --delimiter "  "
+#exec --no-startup-id python3 /home/mirza/Scripts/i3-workspace-names-daemon --delimiter "  "
 
 # Startup programs
-exec slack -u %U
- 
+#exec slack -u %U
+exec --no-startup-id dropbox
+
+for_window [title="^Android Emulator.+:[0-9]+$"] floating enable

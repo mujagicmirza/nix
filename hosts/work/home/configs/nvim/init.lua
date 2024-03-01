@@ -128,9 +128,6 @@ require("colorizer").setup {
     -- all the sub-options of filetypes apply to buftypes
     buftypes = {},
 }
-require("pets").setup({
-  -- your options here
-})
 
 require('telescope').setup {
   defaults = {
@@ -147,5 +144,3 @@ require("gruvbox").setup({
   transparent_mode = true,
 })
 vim.cmd("colorscheme gruvbox")
-
-vim.cmd('autocmd VimEnter * PetsNew Pet')

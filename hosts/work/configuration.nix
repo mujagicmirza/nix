@@ -2,12 +2,13 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, inputs, pkgs, unstablePkgs, nodePkgs, ... }:
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./xserver.nix
+      inputs.home-manager.nixosModules.default
     ];
 
   # Bootloader.
@@ -15,16 +16,6 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
   boot.supportedFilesystems = [ "ntfs" ];
-  #boot.kernelParams = [
-  #  "quiet"
-  #  "splash"
-  #];
-  #boot.plymouth = {
-  #  enable = true;
-  #};
-
-  #boot.extraModulePackages = with config.boot.kernelPackages; [ evdi ];
-
 
   #programs.adb.enable = true;
   programs.java.enable = true;
@@ -32,15 +23,10 @@
   virtualisation.virtualbox.host.enable = true;
   users.extraGroups.vboxusers.members = [ "mirza" ];
 
-
-  networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Enable networking
+  networking.hostName = "nixos"; # Define your hostname.
   networking.networkmanager.enable = true;
 
   # Set your time zone.
@@ -90,8 +76,6 @@
     description = "Mirza Mujagić";
     extraGroups = [ "networkmanager" "wheel" "docker" "adbusers"];
     packages = with pkgs; [
-    #  firefox
-    #  thunderbird
     ];
   };
 
@@ -109,12 +93,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    #xfce.xfce4-panel
-    #xfce.xfce4-genmon-plugin
-    #xfce.xfce4-i3-workspaces-plugin
-    #xfce.xfce4-pulseaudio-plugin
-    #xfce.xfce4-systemload-plugin
-    #linuxKernel.packages.linux_zen.evdi
   ];
 
   systemd = {
@@ -135,19 +113,6 @@
 
   hardware.opengl.enable = true;
 
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
   services.openssh = {
     enable = true;
     settings.PasswordAuthentication = true;
@@ -169,7 +134,12 @@
     127.0.0.1 dev.pma.jobstep.com
   '';
 
-  #52.51.224.105 staging.js.jobstep.com
+  home-manager = {
+    extraSpecialArgs = { inherit inputs unstablePkgs nodePkgs; };
+    users = {
+      "mirza" = import ./home/home.nix;
+    };
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -178,5 +148,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "22.11"; # Did you read the comment?
-
 }

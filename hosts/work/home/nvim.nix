@@ -1,15 +1,4 @@
 { config, pkgs, lib, ...}:
-
-let
-  fromGitHub = ref: repo: pkgs.vimUtils.buildVimPlugin {
-    pname = "${lib.strings.sanitizeDerivationName repo}";
-    version = ref;
-    src = builtins.fetchGit {
-      url = "https://github.com/${repo}.git";
-      ref = ref;
-    };
-  };
-in
 {
   programs.neovim = {
     enable = true;
@@ -44,13 +33,8 @@ in
 
       # Colorschemes
       papercolor-theme
-      (fromGitHub "HEAD" "ntk148v/komau.vim")
-      (fromGitHub "HEAD" "shaunsingh/nord.nvim")
       gruvbox-nvim
 
-      (fromGitHub "HEAD" "giusgad/pets.nvim")
-        (fromGitHub "HEAD" "giusgad/hologram.nvim")
-        (fromGitHub "HEAD" "MunifTanjim/nui.nvim")
     ];
 
     extraConfig = ''
