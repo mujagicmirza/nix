@@ -15,8 +15,8 @@ in
 
       inputs.home-manager.nixosModules.default
 
-      #(modulesPath + /nixos/vbox.nix)
-      #(modulesPath + /nixos/android.nix)
+      #(modulesPath + /vbox.nix)
+      #(modulesPath + /android.nix)
     ];
 
   # Flakes
