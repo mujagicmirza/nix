@@ -24,55 +24,5 @@
     source = ./scripts/monitors.sh; 
   };
 
-  home.file."Scripts/gls" = {
-    executable = true;
-    source = ./scripts/gls.sh; 
-  };
-
   # home.file."Scripts/i3-workspace-names-daemon.py".source = ./scripts/i3-workspace-names-daemon.py;
-
-  xdg.configFile.ranger = {
-    source = ./configs/ranger;
-    recursive = true;
-  };
-
-  xdg.configFile."ranger/scope.sh" = {
-    source = ./configs/ranger/scope.sh;
-    executable = true;
-  };
-
-  xdg.configFile.i3 = {
-    source = ./configs/i3;
-    recursive = true;
-  };
-
-  xdg.configFile.nvim = {
-    source = ./configs/nvim;
-    recursive = true;
-  };
-
-  xdg.configFile.kitty = {
-    source = ./configs/kitty;
-    recursive = true;
-  };
-
-  xdg.configFile.tofi = {
-    source = ./configs/tofi;
-    recursive = true;
-  };
-
-  xdg.configFile.hypr = {
-    source = ./configs/hypr;
-    recursive = true;
-  };
-
-  xdg.configFile.waybar = {
-    source = ./configs/waybar;
-    recursive = true;
-  };
-
-  xdg.configFile.wtf = {
-    source = ./configs/wtf;
-    recursive = true;
-  };
 }

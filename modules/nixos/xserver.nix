@@ -3,11 +3,10 @@
   services.xserver = {
     enable = true;
 
-    layout = "ba";
+    xkb.layout = "ba";
 
     desktopManager = {
       xterm.enable = false;
-      #gnome.enable = true;
       xfce = {
         enable = true;
         noDesktop = true;
