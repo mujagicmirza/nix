@@ -4,7 +4,6 @@
     enable = true;
 
     layout = "ba";
-    xkbVariant = "";
 
     desktopManager = {
       xterm.enable = false;
