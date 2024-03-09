@@ -27,13 +27,14 @@
 
       nvim-web-devicons   # Icons
       nvim-colorizer-lua
-      nvim-treesitter
+      nvim-treesitter.withAllGrammars
       vimtex              # LaTeX support
       # ultisnips         # Snippets
 
       # Colorschemes
       papercolor-theme
       gruvbox-nvim
+      onehalf
 
     ];
 
