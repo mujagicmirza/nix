@@ -67,11 +67,11 @@ vim.cmd[[
     nnoremap <Leader>s :vsp <C-R>=expand("%:p:h") . "/" . matchstr(expand("%:t:r"), '^\(.*\)\(\.spec\)*$') . ".module.scss"<CR>
 
     " Use tab to toggle folds
-    nnoremap <Tab> za
+    " nnoremap <Tab> za
 
     " Because tab was previously used for jumping backwards in the jump list as Ctrl-i,
     " we need to remap that to something else: Ctrl-l
-    nnoremap <C-l> <C-i>
+    " nnoremap <C-l> <C-i>
 
     "nnoremap <c-c> i\chord{}<ESC>i
     "nnoremap <F5> o\begin{strofa}<ESC>o\end{strofa}<ESC>k

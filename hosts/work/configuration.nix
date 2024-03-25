@@ -35,15 +35,15 @@ in
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
 
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
+  ## Enable CUPS to print documents.
+  #services.printing.enable = true;
 
- # Detect network printers
-  services.avahi = {
-    enable = true;
-    nssmdns4 = true;
-    openFirewall = true;
-  };
+  ## Detect network printers
+  #services.avahi = {
+  #  enable = true;
+  #  nssmdns4 = true;
+  #  openFirewall = true;
+  #};
 
   users.users.mirza = {
     isNormalUser = true;

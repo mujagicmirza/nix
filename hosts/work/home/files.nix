@@ -19,7 +19,7 @@
     source = ./scripts/lock.sh; 
   };
 
-  home.file."Scripts/monitors.sh" = {
+  home.file."Scripts/monitors" = {
     executable = true;
     source = ./scripts/monitors.sh; 
   };

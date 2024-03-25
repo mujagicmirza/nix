@@ -143,4 +143,4 @@ require("gruvbox").setup({
   contrast = "hard",
   transparent_mode = true,
 })
-vim.cmd("colorscheme onehalfdark")
+vim.cmd("colorscheme gruvbox")

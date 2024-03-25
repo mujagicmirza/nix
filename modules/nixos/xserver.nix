@@ -12,7 +12,6 @@
         noDesktop = true;
         enableXfwm = false;
       };
-      plasma6.enable = true;
     };
 
    

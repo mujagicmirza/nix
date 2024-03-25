@@ -34,8 +34,6 @@
       # Colorschemes
       papercolor-theme
       gruvbox-nvim
-      onehalf
-
     ];
 
     extraConfig = ''
