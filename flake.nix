@@ -31,6 +31,15 @@
         ];
       };
 
+      nixosConfigurations.pc = nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          inherit inputs unstablePkgs nodePkgs system;
+        };
+        modules = [ 
+          ./hosts/pc/configuration.nix
+        ];
+      };
+
       nixosConfigurations.wsl = nixpkgs.lib.nixosSystem {
         specialArgs = {
           inherit inputs unstablePkgs nodePkgs system;
